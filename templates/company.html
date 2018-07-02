@@ -1,0 +1,35 @@
+{% extends "templates/base.html" %}
+
+{% block page_title %}
+Find internship jobs in {{ intern.location }}
+{% endblock page_title %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-8 pt-4">
+        <h2>
+            Internship jobs in {{ city_name }}
+        </h2>
+        {% if internships %} {% for intern in internships %}
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5>
+                    {{ intern.position }} @
+                    <a href="{% url 'internship_by_company' intern.company.slug %}">{{ intern.company }}</a>
+                </h5>
+                <p>
+                    <ion-icon name="pin"></ion-icon>
+                    <a class="pr-2" href="{% url 'internship_by_city' intern.location.slug %}">{{ intern.location }}</a>
+                    <ion-icon name="time"></ion-icon>
+                    Posted: {{ intern.posted_at|timesince }} ago
+                </p>
+                <a href="{{ intern.source }}?ref=intern-hunt" class="btn btn-success">Apply Now</a>
+            </div>
+        </div>
+        {% endfor %} {% endif %}
+    </div>
+    {% include "templates/includes/sidebar.html" %}
+</div>
+
+{% if pages > 1 %} {% include "templates/includes/pagination.html" %} {% else %} {% endif %}
+{% endblock content %}

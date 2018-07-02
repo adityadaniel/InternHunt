@@ -1,0 +1,2 @@
+# InternHunt
+InternHunt is an app I built during the weekend. The idea is pretty simple, it's a place of curated internship jobs at startup. The app is built with Django framework + Bootstrap. I know the code is kinda messy but here's another step of learning to code.

@@ -1,0 +1,16 @@
+<!--Sidebar-->
+<div class="col-sm-4 pt-4">
+    <div class="card">
+        <div class="card-header">
+            Browse by city:
+        </div>
+        <ul class="list-group list-group-flush">
+            {% if cities %} {% for city in cities %}
+            <li class="list-group-item">
+                <a href="{% url 'internship_by_city' city.slug %}">{{ city.name }}</a>
+            </li>
+            {% endfor %} {% endif %}
+        </ul>
+    </div>
+</div>
+<!--End Sidebar-->
